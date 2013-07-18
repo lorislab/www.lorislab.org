@@ -2,7 +2,7 @@
 permalink: pretty
 paginate: 10 
 exclude: 
-name: ModelMapper
+name: Session monitor
 baseurl: 
 auto: true
 markdown: kramdown
