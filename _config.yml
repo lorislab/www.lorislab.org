@@ -4,6 +4,6 @@ paginate: 10
 exclude: 
 name: Session monitor
 baseurl: 
-auto: true
+auto: false
 markdown: kramdown
 version: Alpha1
