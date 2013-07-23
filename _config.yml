@@ -1,7 +1,0 @@
-# Jekyll
-permalink: pretty
-paginate: 10 
-exclude: 
-name: Session monitor
-markdown: kramdown
-version: Alpha1
