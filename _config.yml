@@ -3,6 +3,5 @@ permalink: pretty
 paginate: 10 
 exclude: 
 name: Session monitor
-baseurl: 
 markdown: kramdown
 version: Alpha1
