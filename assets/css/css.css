@@ -187,6 +187,18 @@ h3 code {
   /* color: rgba(255,255,255,.5); */
 }
 
+/* Masthead links */
+.masthead-links2 {
+  margin: 0;
+  list-style: none;
+}
+
+.masthead-links2 li {
+  display: inline;
+  padding: 0px;
+  /* color: rgba(255,255,255,.5); */
+}
+
 /* Social buttons */
 .bs-docs-social {
   padding: 15px 0;
