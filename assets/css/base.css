@@ -1,0 +1,50 @@
+.email span { 
+	display:none; 
+}
+
+.email a { 
+	unicode-bidi:bidi-override; 
+	direction: rtl; 
+}
+
+.base-divider {
+  margin: 30px 0 30px; /* Space out the Bootstrap <hr> more */
+}
+
+.base-divider-top {
+  margin-top: 70px; /* Space out the Bootstrap <hr> more */
+}
+
+.big-icon {
+	font-size:220px;
+}
+
+ 
+.medium-icon:before {
+	font-size:100px;
+}
+
+/* SOCIAL */
+.bs-docs-social {
+  padding: 3px 0;
+  text-align: center;
+  background-color: #f5f5f5;
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 40px;
+}
+
+.bs-docs-social-buttons {
+  margin-left: 0;
+  margin-bottom: 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.bs-docs-social-buttons li {
+  display: inline-block;
+  padding: 5px 8px;
+  line-height: 1;
+  *display: inline;
+  *zoom: 1;
+}
