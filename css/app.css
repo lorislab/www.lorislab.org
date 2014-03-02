@@ -1,0 +1,40 @@
+@import "fontello.css";
+/*@import "animation.css";*/
+
+.link-inherit a {
+    color: inherit !important;
+}
+
+.link-special {
+    text-decoration: none !important;
+}
+
+.link-special span {
+	font-size: 110%;
+}
+
+.nav-twitter > li {
+	margin-left: 15px;
+}
+
+.nav-space {
+	margin-top: 100px;
+}
+
+@media (min-width: 768px) {
+  .nav-twitter > li {
+    margin-top: -34px;
+	margin-left: 0px;
+  } 
+  .nav-space {
+    margin-top: 50px;
+  }   
+}
+
+.big-icon {
+	font-size: 150px;
+}
+
+.medium-icon:before {
+	font-size: 100px;
+}

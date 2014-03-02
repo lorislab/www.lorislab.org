@@ -1,0 +1,204 @@
+<h1><i class="icon-beaker"></i>Release monitor
+	<small>
+		<span style="float: right">
+			<span class="label label-primary link-inherit"><i class="icon-attention-alt"></i><a href="https://github.com/lorislab/armonitor/issues" target="_blank">Issues</a></span>
+			<span class="label label-success link-inherit"><i class="icon-code"></i><a href="https://github.com/lorislab/armonitor" target="_blank">Source code</a></span>
+		</span>
+	</small>
+</h1>
+<span style="float: right; margin-top: 8px;">
+	<iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=lorislab&amp;repo=armonitor&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="100" height="20"></iframe>
+	<iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=lorislab&amp;repo=armonitor&amp;type=fork&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="100" height="20"></iframe>
+	<iframe src="http://ghbtns.com/github-btn.html?user=lorislab&repo=armonitor&count=true&type=follow" allowtransparency="true" frameborder="0" scrolling="0" width="165" height="20"></iframe>
+</span>
+<ol class="breadcrumb">
+	<li>
+		<i class="icon-cog-alt"></i> 
+		<a href="#/projects">
+			Projects
+		</a>
+	</li>	
+	<li class="active">
+		<i class="icon-beaker"></i> Release monitor
+	</li>	
+</ol>
+
+<div class="row" style="text-align: center;">
+	<div class="col-lg-4" style="text-align: center;">
+		<span class="icon-magic medium-icon">
+			<h2>Easy to integrate</h2>
+			<p>This application provides the maven plugin for easy integration. For non maven project you need to check the ARM properties file to build your project correctly.</p>
+        </span>
+	</div>
+
+	<div class="col-lg-4">
+		<span class="icon-gauge medium-icon">
+			<h2>Dashboard</h2>
+			<p>The dashboard of the application give you an overview about the systems and the deployed version on it. For each component you can get more information like source code changes.</p>
+        </span></div>
+
+	<div class="col-lg-4">
+		<span class="icon-megaphone medium-icon">
+			<h2>Notification</h2>
+			<p>The monitor can automatically check the version on your systems and send a notification to users about the new deployed version. For non reachable system, the developer can register a new version for the systems by using the maven plugin.</p>
+        </span></div>
+</div>
+
+<div class="alert alert-danger" style="margin-top: 10px;">
+	<h4 style="text-align: center"><strong>Oh snap!</strong> In the current version {{version}} is the administration functionality and security not implemented!</h4>
+</div>
+<hr>
+
+
+<div class="row">
+	<div class="col-lg-6">
+		<h3>Maven dependecies repository</h3>
+		<pre>
+&lt;repository&gt;
+	&lt;id&gt;lorislab&lt;/id&gt;
+	&lt;url&gt;http://dl.bintray.com/lorislab/maven&lt;/url&gt;
+	&lt;releases&gt;
+		&lt;enabled&gt;true&lt;/enabled&gt;
+	&lt;/releases&gt;
+	&lt;snapshots&gt;
+		&lt;enabled&gt;false&lt;/enabled&gt;
+	&lt;/snapshots&gt;
+&lt;/repository&gt;	
+		</pre>
+	</div>
+	<div class="col-lg-6">
+		<h3>Maven plugin repository</h3>
+		<pre>
+&lt;pluginRepository&gt;
+	&lt;id&gt;lorislab-plugins&lt;/id&gt;
+	&lt;url&gt;http://dl.bintray.com/lorislab/maven&lt;/url&gt;
+	&lt;layout&gt;default&lt;/layout&gt;
+	&lt;releases&gt;
+		&lt;updatePolicy&gt;never&lt;/updatePolicy&gt;
+	&lt;/releases&gt;
+	&lt;snapshots&gt;
+		&lt;updatePolicy&gt;never&lt;/updatePolicy&gt;
+	&lt;/snapshots&gt;
+&lt;/pluginRepository&gt;</pre>
+	</div>
+</div>
+
+<hr>
+
+<h3 id="maven" >Maven integration</h3>
+<p>
+	Add the <span class="label label-info">org.lorislab.armonitor:armonitor-maven-plugin:{{version}}</span> plugin with the goal <span class="label label-info">build</span> to your MAVEN project.
+</p>
+<pre>
+&lt;plugin&gt;
+	&lt;groupId&gt;org.lorislab.armonitor&lt;/groupId&gt;
+	&lt;artifactId&gt;armonitor-maven-plugin&lt;/artifactId&gt;
+	&lt;version&gt;{{version}}&lt;/version&gt;
+	&lt;executions&gt;
+		&lt;execution&gt;
+			&lt;phase&gt;prepare-package&lt;/phase&gt;
+			&lt;goals&gt;
+				&lt;goal&gt;build&lt;/goal&gt;
+			&lt;/goals&gt;
+			&lt;configuration&gt;
+				&lt;releaseBuild&gt;RC1&lt;/releaseBuild&gt;
+				&lt;releaseScm&gt;rev123&lt;/releaseScm&gt;
+				&lt;custom&gt;
+					&lt;key1&gt;value1&lt;/key1&gt;
+					&lt;key2&gt;value2&lt;/key2&gt;
+				&lt;/custom&gt;
+			&lt;/configuration&gt;
+		&lt;/execution&gt;
+	&lt;/executions&gt;
+&lt;/plugin&gt;	
+</pre>
+<p>
+	The plugin has few attributes to manage the build release information. The maven parameters like <span class="label label-info">groupId</span>, <span class="label label-info">artifactId</span>, <span class="label label-info">version</span> and <span class="label label-info">build time</span> are store automatically.
+</p>
+<div class="panel panel-default">
+	<div class="panel-heading">The plugin parameters</div>
+	<div class="panel-body">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Default value</th>
+					<th>Description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>releaseBuild</td>
+					<td></td>
+					<td>The release build number.</td>
+				</tr>
+				<tr>
+					<td>releaseScm</td>
+					<td></td>
+					<td>The revision number.</td>
+				</tr>	
+				<tr>
+					<td>custom</td>
+					<td></td>
+					<td>The map of custom parameters.</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<hr>
+
+<h3 id="jboss7">JBoss7 service</h3>
+<p>
+	For JBoss7 we provided the service that can get the versions and ARM properties from your application deployed on the server. 
+	You can download the service manually from our release repository
+	<a class="link-special" href="http://dl.bintray.com/lorislab/maven/org/lorislab/armonitor/armonitor-agent-web/{{version}}/armonitor-agent-web-{{version}}.war">
+		<span class="label label-success">armonitor-agent-web.war <i class="icon-download-cloud"></i></span>
+	</a> or get it through maven.	
+</p>
+<pre>
+&lt;dependency&gt;
+	&lt;groupId&gt;org.lorislab.armonitor&lt;/groupId&gt;
+	&lt;artifactId&gt;armonitor-agent-web&lt;/artifactId&gt;
+	&lt;packaging&gt;war&lt;/packaging&gt;
+	&lt;version&gt;{{version}}&lt;/version&gt;
+&lt;/dependency&gt;	
+</pre>
+<p>
+	The URL to register the service in the monitor is <b>http://localhost:8080/armonitor</b>
+</p>
+<hr>
+
+<h3 id="ear">EAR or WAR services</h3>
+<p>
+	For non JBoss7 application server or if you cannot deploy the service as a WAR application, you can add the ARM service directly to your application by putting these maven dependencies to WAR project.
+	<a class="link-special" href="http://dl.bintray.com/lorislab/maven/org/lorislab/armonitor/armonitor-agent-rs/{{version}}/armonitor-agent-rs-{{version}}.jar">
+		<span class="label label-success">armonitor-agent-rs.jar <i class="icon-download-cloud"></i></span>
+	</a>
+	<a class="link-special" href="http://dl.bintray.com/lorislab/maven/org/lorislab/armonitor/armonitor-agent-impl/{{version}}/armonitor-agent-impl-{{version}}.jar">
+		<span class="label label-success">armonitor-agent-impl.jar <i class="icon-download-cloud"></i></span>
+	</a>	
+</p>
+<pre>
+&lt;dependency&gt;
+	&lt;groupId&gt;org.lorislab.armonitor&lt;/groupId&gt;
+	&lt;artifactId&gt;armonitor-agent-rs&lt;/artifactId&gt;
+	&lt;version&gt;{{version}}&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+	&lt;groupId&gt;org.lorislab.armonitor&lt;/groupId&gt;
+	&lt;artifactId&gt;armonitor-agent-impl&lt;/artifactId&gt;
+	&lt;version&gt;{{version}}&lt;/version&gt;
+&lt;/dependency&gt;	
+</pre>
+<p>
+	The URL to register the service in the monitor is <b>http://localhost:8080/<span class="label label-info">my-app-context</span>/<span class="label label-info">my-rs-servlet</span></b>
+</p>
+
+<hr>
+
+<h3 id="monitor">Install release monitor</h3>
+<p class="link-special">
+	<span class="label label-warning">Coming soon.</span>
+</p>
