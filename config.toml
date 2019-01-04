@@ -1,4 +1,4 @@
-baseURL = "http://www.lorislab.org/"
+baseURL = "https://www.lorislab.org/"
 languageCode = "en-us"
 title = "lorislab"
 theme = "hugo-stellar-theme"
