@@ -25,7 +25,7 @@ jobs:
       run: |        
         rm -rf docs
         mv public docs
-        git config --global user.email "p6@lorislab.org"
+        git config --global user.email "team@lorislab.org"
         git config --global user.name "lorislab.org"
         git add docs/
         git commit -m "Build page"
